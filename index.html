@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siddhartha Sharma</title>
+    <!-- Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Reset --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1a202c; /* A dark gray, softer than black */
+            --primary-color: #007A7A; /* A deep, professional teal */
+            --primary-hover: #005A5A;
+            --card-bg: #f7fafc; /* Very light gray */
+            --border-color: #e2e8f0;
+            --font-main: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- Utility Classes --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.3;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        h1 {
+            font-size: 3rem; /* 48px */
+        }
+
+        h2 {
+            font-size: 2.25rem; /* 36px */
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5rem; /* 24px */
+            color: var(--primary-color);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.125rem; /* 18px */
+            color: #4a5568; /* Medium gray */
+        }
+
+        /* --- Header & Navigation --- */
+        .main-header {
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            background-color: rgba(255, 255, 255, 0.85);
+        }
+
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 0.25rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        /* --- Mobile Menu --- */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background-color: var(--bg-color);
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem; /* 56px */
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 1.25rem; /* 20px */
+            max-width: 700px;
+            margin: 1.5rem auto 2.5rem auto;
+            color: #4a5568;
+        }
+
+        /* --- Teaser Section (Framework) --- */
+        .teaser {
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .teaser-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .teaser-content h2 {
+            margin-bottom: 2rem;
+        }
+
+        /* --- Results Section --- */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .result-card {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .result-stat {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-label {
+            font-size: 1rem;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        
+        .results-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* --- Mission Section (CTA) --- */
+        .mission {
+            text-align: center;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            border-radius: 12px;
+            padding: 5rem 2rem;
+        }
+        
+        .mission h2 {
+            color: var(--bg-color);
+        }
+
+        .mission p {
+            color: #e2e8f0;
+            max-width: 700px;
+            margin: 1.5rem auto 2.5rem auto;
+            font-size: 1.25rem;
+        }
+        
+        .mission .btn {
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .mission .btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* --- Footer --- */
+        .main-footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-links {
+            list-style: none;
+            display: flex;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links li {
+            margin: 0 1rem;
+        }
+        
+        .footer-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-copyright {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 65px; /* Height of header */
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-color);
+                border-bottom: 1px solid var(--border-color);
+                padding: 1rem 0;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem 0;
+            }
+            
+            .nav-links a.active::after {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.75rem;
+            }
+            
+            .hero p {
+                font-size: 1.125rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+            
+            .hero {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- --- Header & Navigation --- -->
+    <header class="main-header">
+        <div class="container main-nav">
+            <a href="index.html" class="logo">Philosophy To AI Thought</a>
+            
+            <nav>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+                    &#9776; <!-- Hamburger Icon -->
+                </button>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- --- Hero Section --- -->
+        <section class="hero">
+            <div class="container">
+                <h1>Designing the Next Paradigm of Machine Cognition</h1>
+                <p>
+                    Architectural Elegance Over Scalability
+                </p>
+                <a href="research.html" class="btn">Explore My Research</a>
+            </div>
+        </section>
+
+        <!-- --- Results Section --- -->
+        <section class="results">
+            <div class="container">
+                <h2>Tangible Results on Complex Problems</h2>
+                
+                <div class="results-grid">
+                    <!-- Result 1: TSP -->
+                    <div class="result-card">
+                        <div class="result-stat">99.97%</div>
+                        <div class="result-label">Traveling Salesman (berlin52)</div>
+                    </div>
+                    
+                    <!-- Result 2: Protein Folding -->
+                    <div class="result-card">
+                        <div class="result-stat">1.96 Å</div>
+                        <div class="result-label">Protein Folding (1L2Y)</div>
+                    </div>
+                    
+                    <!-- Result 3: Homeostatic Solver -->
+                    <div class="result-card">
+                        <h3 class="result-stat">Solver</h3>
+                        <div class="result-label">Homeostatic Solver</div>
+                    </div>
+                </div>
+                
+                <div class="results-cta">
+                     <a href="projects.html" class="btn">View All Projects</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- Mission Section (CTA) --- -->
+        <section class="mission-wrapper">
+            <div class="container">
+                <div class="mission">
+                    <h2>My Pursuit</h2>
+                    <p>
+                        Building self-evolving digital intelligence capable of reasoning, learning, and creating symbiotically with humans.
+                    </p>
+                    <a href="services.html" class="btn">Collaborate With Me</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- --- Footer --- -->
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <ul class="footer-links">
+                <!-- Add your actual social links here -->
+                <li><a href="#" target="_blank">LinkedIn</a></li>
+                <li><a href="#" target="_blank">GitHub</a></li>
+                <li><a href="#" target="_blank">X (Twitter)</a></li>
+            </ul>
+            <p class="footer-copyright">
+                &copy; 2025 AI Architect. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            // Toggle ARIA expanded state
+            const isExpanded = navLinks.classList.contains('active');
+            menuToggle.setAttribute('aria-expanded', isExpanded);
+        });
+    </script>
+
+</body>
+</html>
