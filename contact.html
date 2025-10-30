@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siddhartha Sharma</title>
+    <!-- Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Reset --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1a202c;
+            --primary-color: #007A7A;
+            --primary-hover: #005A5A;
+            --card-bg: #f7fafc;
+            --border-color: #e2e8f0;
+            --font-main: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- Utility Classes --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.3;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        h1 {
+            font-size: 3rem; /* 48px */
+        }
+
+        h2 {
+            font-size: 2.25rem; /* 36px */
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5rem; /* 24px */
+            color: var(--primary-color);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.125rem; /* 18px */
+            color: #4a5568;
+        }
+
+        /* --- Header & Navigation --- */
+        .main-header {
+            background-color: rgba(255, 255, 255, 0.85);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 0.25rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        /* --- Mobile Menu --- */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* --- Page-Specific Styles --- */
+        .page-hero {
+            background-color: var(--card-bg);
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .page-hero h1 {
+            font-size: 2.75rem; /* 44px */
+        }
+        
+        .page-hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #4a5568;
+        }
+
+        /* Wrapper for standard page content */
+        .content-section {
+            padding: 4rem 0;
+        }
+
+        .content-wrapper {
+            max-width: 800px; /* Centered form container */
+            margin: 0 auto;
+        }
+        
+        /* --- Contact Form Styles --- */
+        .contact-card {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .contact-card h3 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(0, 122, 122, 0.2); /* Focus ring */
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-submit-btn {
+            width: auto; /* Don't make button full width */
+            justify-self: flex-start; /* Align button to the left */
+            font-weight: 700; /* Make button text bolder */
+        }
+
+    /* --- Footer --- */
+        .main-footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-links {
+            list-style: none;
+            display: flex;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links li {
+            margin: 0 1rem;
+        }
+        
+        .footer-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-copyright {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 65px; /* Height of header */
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-color);
+                border-bottom: 1px solid var(--border-color);
+                padding: 1rem 0;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem 0;
+            }
+            
+            .nav-links a.active::after {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+            
+            .page-hero {
+                padding: 3rem 0;
+            }
+            
+            .page-hero h1 {
+                font-size: 2.25rem;
+            }
+            
+            .content-section {
+                padding: 2rem 0;
+            }
+            
+            .contact-card {
+                padding: 1.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- --- Header & Navigation --- -->
+    <header class="main-header">
+        <div class="container main-nav">
+            <a href="index.html" class="logo">Siddhartha Sharma</a>
+            
+            <nav>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+                    &#9776; <!-- Hamburger Icon -->
+                </button>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- --- Page Hero Section --- -->
+        <section class="page-hero">
+            <div class="container">
+                <h1>Get In Touch</h1>
+                <p>For research collaborations, speaking engagements, or service inquiries.</p>
+            </div>
+        </section>
+
+        <!-- --- Content Section --- -->
+        <section class="content-section">
+            <div class="container content-wrapper">
+            
+                <!-- Contact Form Card -->
+                <div class="contact-card">
+                    <h3>Send a Message</h3>
+                    
+                    <!-- 
+                        NOTE: This form is now configured to work with Formspree.
+                        To make it functional:
+                        1. Sign up for a free account at https://formspree.io/
+                        2. Create a new form and get your unique endpoint URL.
+                        3. Replace the placeholder 'YOUR-FORM-ID' in the 'action' attribute below with your unique URL.
+                    -->
+                    <form class="contact-form" action="https://formspree.io/f/YOUR-FORM-ID" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <!-- Using 'name="_replyto"' allows you to just hit "Reply" in your email client -->
+                            <input type="email" id="email" name="_replyto" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn form-submit-btn">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- --- Footer --- -->
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <ul class="footer-links">
+              <li><a href="https://www.linkedin.com/in/siddhartha-sharma-ai" target="_blank">LinkedIn</a></li>
+              <li><a href="https://github.com/mesidd" target="_blank">GitHub</a></li>
+              <li><a href="https://x.com/mesidd_" target="_blank">X (Twitter)</a></li>
+            </ul>
+            <p class="footer-copyright">
+                &copy; 2025 Siddhartha Sharma. All rights reserved.
+            </spp>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            const isExpanded = navLinks.classList.contains('active');
+            menuToggle.setAttribute('aria-expanded', isExpanded);
+        });
+    </script>
+
+</body>
+</html>
