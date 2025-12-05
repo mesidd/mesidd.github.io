@@ -3,502 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siddhartha Sharma</title>
-    <!-- Google Font: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
+    <title>Sovereign AI | Private Offline Intelligence</title>
+    <meta name="description" content="Enterprise-grade Artificial Intelligence running locally on your hardware. Zero data leaks. Total sovereignty.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
     <style>
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #1a202c; 
-            --primary-color: #007A7A;
-            --primary-hover: #005A5A;
-            --card-bg: #f7fafc;
-            --border-color: #e2e8f0;
-            --font-main: 'Inter', sans-serif;
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #e5e5e5; }
+        .gradient-text {
+            background: linear-gradient(to right, #ffffff, #a3a3a3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .glow {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
         }
-
-        body {
-            font-family: var(--font-main);
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* --- Utility Classes --- */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem;
-
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--primary-color);
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 700;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            transform: translateY(-2px);
-        }
-
-        section {
-            padding: 5rem 0;
-        }
-
-        h1, h2, h3 {
-            line-height: 1.3;
-            font-weight: 700;
-            margin-bottom: 1.25rem;
-            color: var(--text-color);
-        }
-
-        h1 {
-            font-size: 3rem; /* 48px */
-        }
-
-        h2 {
-            font-size: 2.25rem; /* 36px */
-            text-align: center;
-        }
-
-        h3 {
-            font-size: 1.5rem; /* 24px */
-            color: var(--primary-color);
-        }
-
-        p {
-            margin-bottom: 1rem;
-            font-size: 1.125rem; /* 18px */
-            color: #4a5568;
-        }
-
-        /* --- Header & Navigation --- */
-        .main-header {
-            background-color: rgba(255, 255, 255, 0.85);
-            border-bottom: 1px solid var(--border-color);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-        }
-
-        .main-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-color);
-            text-decoration: none;
-        }
-        
-        .logo span {
-            color: var(--primary-color);
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
-
-        .nav-links li {
-            margin-left: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #4a5568;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-            padding-bottom: 0.25rem;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--primary-color);
-        }
-
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: var(--primary-color);
-        }
-
-        /* --- Mobile Menu --- */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--text-color);
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            background-color: var(--bg-color);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center; 
-            min-height: 92vh;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem; /* 56px */
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero p {
-            font-size: 1.25rem; /* 20px */
-            max-width: 700px;
-            margin: 1.5rem auto 2.5rem auto;
-            color: #4a5568;
-        }        
-
-        /* --- Results Section --- */
-        .results {
-            background-color: var(--card-bg);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .result-card {
-            background-color: var(--bg-color); /* White cards */
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Softer shadow */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .result-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-        }
-
-        .result-stat {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .result-label {
-            font-size: 1rem;
-            color: #4a5568;
-            font-weight: 500;
-        }
-        
-        .results-cta {
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        /* --- Mission Section (CTA) --- */
-        .mission {
-            text-align: center;
-            background-color: var(--text-color); 
-            color: var(--bg-color);
-            border-radius: 12px;
-            padding: 5rem 2rem;
-        }
-        
-        .mission h2 {
-            color: var(--bg-color);
-        }
-
-        .mission p {
-            color: #e2e8f0;
-            max-width: 700px;
-            margin: 1.5rem auto 2.5rem auto;
-            font-size: 1.25rem;
-        }
-        
-        .mission .btn {
-            background-color: var(--bg-color); /* Light button */
-            color: var(--primary-color);
-            font-weight: 700;
-            border: none;
-        }
-        
-        .mission .btn:hover {
-            background-color: #f0f0f0; /* Slightly off-white hover */
-            color: var(--primary-hover);
-        }
-
-        /* --- Footer --- */
-        .main-footer {
-            padding: 3rem 0;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .footer-links {
-            list-style: none;
-            display: flex;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-links li {
-            margin: 0 1rem;
-        }
-        
-        .footer-links a {
-            text-decoration: none;
-            color: #4a5568;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .footer-copyright {
-            color: #718096;
-            font-size: 0.9rem;
-        }
-
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 65px; /* Height of header */
-                left: 0;
-                width: 100%;
-                background-color: var(--bg-color); /* Light bg for mobile menu */
-                border-bottom: 1px solid var(--border-color);
-                padding: 1rem 0;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                margin: 0;
-                text-align: center;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 1rem 0;
-            }
-            
-            .nav-links a.active::after {
-                display: none;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-            
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero h1 {
-                font-size: 2.75rem;
-            }
-            
-            .hero p {
-                font-size: 1.125rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            section {
-                padding: 3rem 0;
-            }
-            
-            .hero {
-                padding-top: 4rem;
-                padding-bottom: 4rem;
-            }
-            
-            .results-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
     </style>
 </head>
-<body>
+<body class="antialiased selection:bg-white selection:text-black">
 
-    <!-- --- Header & Navigation --- -->
-    <header class="main-header">
-        <div class="container main-nav">
-            <a href="index.html" class="logo">Siddhartha Sharma</a>
-            
-            <nav>
-                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
-                    &#9776; <!-- Hamburger Icon -->
-                </button>
-                <ul class="nav-links" id="nav-links">
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <!-- <li><a href="research.html">Research</a></li> -->
-                    <li><a href="projects.html">Projects</a></li>
-                    <!-- <li><a href="services.html">Services</a></li> -->
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="text-xl font-bold tracking-tighter">SOVEREIGN <span class="text-gray-500">AI</span></div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
+                <a href="#problem" class="hover:text-white transition">The Risk</a>
+                <a href="#solution" class="hover:text-white transition">The Vault</a>
+                <a href="#industries" class="hover:text-white transition">Industries</a>
+            </div>
+            <a href="mailto:sids51336@gmail.com" class="bg-white text-black px-5 py-2 text-sm font-semibold rounded hover:bg-gray-200 transition">
+                Deploy Intelligence
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 md:pt-48 md:pb-32 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-block px-3 py-1 mb-6 border border-white/20 rounded-full text-xs tracking-widest uppercase text-gray-400">
+                Data Sovereignty Protocol
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight">
+                Don't Rent Intelligence.<br>
+                <span class="gradient-text">Own It.</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                We build offline, air-gapped Artificial Intelligence infrastructure for organizations that cannot afford data leaks. No Cloud. No APIs. No Monthly Rent.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="mailto:sids51336@gmail.com" class="bg-white text-black px-8 py-4 text-lg font-bold rounded hover:bg-gray-200 transition flex items-center justify-center gap-2">
+                    <i data-lucide="lock"></i> Secure Your Data
+                </a>
+                <a href="#solution" class="border border-white/20 text-white px-8 py-4 text-lg font-semibold rounded hover:bg-white/5 transition">
+                    How It Works
+                </a>
+            </div>
         </div>
     </header>
 
-    <main>
-
-        <!-- --- Hero Section --- -->
-        <section class="hero">
-            <div class="container">
-                <h1>Designing the Next Paradigm of Artificial Intelligence</h1>
-                <p>
-                     The great error of modern AI has been to treat intelligence as a problem of Computer Science alone - Siddhartha Sharma
-                </p>
-                <!-- <a href="research.html" class="btn">Explore My Research</a> -->
-            </div>
-        </section>
-
-        <!-- --- Teaser Section (Framework) --- -->
-
-        <!-- --- Results Section --- -->
-        <!-- <section class="results">
-            <div class="container">
-                <h2>Tangible Results on Complex Problems</h2>
-                
-                <div class="results-grid"> -->
-                    <!-- Result 1: TSP -->
-                    <!-- <div class="result-card">
-                        <div class="result-stat">99%</div>
-                        <div class="result-label">Traveling Salesman (berlin52)</div>
-                    </div> -->
-                    
-                    <!-- Result 2: Protein Folding -->
-                    <!-- <div class="result-card">
-                        <div class="result-stat">1.96 Å</div>
-                        <div class="result-label">Protein Folding (1L2Y)</div>
-                    </div> -->
-                    
-                    <!-- Result 3: Drug Discovery -->
-                    <!-- <div class="result-card">
-                        <h3 class="result-stat">0.628</h3>
-                        <div class="result-label">Drug Discovery <br> (SARS-CoV-2 Mpro, 6LU7)</div>
+    <!-- The Problem (Fear) -->
+    <section id="problem" class="py-20 border-y border-white/5 bg-white/5">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">The Cloud is a Leak.</h2>
+                    <p class="text-gray-400 mb-6 text-lg">
+                        Every time you paste a contract, a patient record, or a trade secret into an AI Model, you are training their model. You are giving away your IP.
+                    </p>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="x-circle" class="text-red-500"></i> Your data leaves your building.
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="x-circle" class="text-red-500"></i> You depend on internet connectivity.
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="x-circle" class="text-red-500"></i> You pay monthly rent forever.
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-black border border-white/10 p-8 rounded-xl glow relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-20">
+                        <i data-lucide="cloud-off" size="64"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">The Sovereign Alternative</h3>
+                    <div class="font-mono text-sm text-green-400 mb-4">> System Status: OFFLINE</div>
+                    <div class="font-mono text-sm text-gray-500 space-y-2">
+                        <p>Loading Local LLM... [OK]</p>
+                        <p>Mounting Vector Database... [OK]</p>
+                        <p>Checking Internet... [DISCONNECTED]</p>
+                        <p class="text-white">Ready. Data remains on device.</p>
                     </div>
                 </div>
-                
-                <div class="results-cta">
-                     <a href="projects.html" class="btn">View All Projects</a>
-                </div>
             </div>
-        </section> -->
+        </div>
+    </section>
 
-        <!-- --- Mission Section (CTA) --- -->
-        <!-- <section class="mission-wrapper">
-            <div class="container">
-                <div class="mission">
-                    <h2>My Pursuit</h2>
-                    <p>
-                        Building self-evolving digital intelligence and energy-efficient machine learning systems that reason, learn, and create in symbiosis with humans.
+    <!-- The Solution (Product) -->
+    <section id="solution" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">The "Black Box" Architecture</h2>
+                <p class="text-gray-400">We install a complete intelligence stack directly on your hardware.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-zinc-900 p-8 rounded-lg border border-white/5 hover:border-white/20 transition">
+                    <i data-lucide="shield-check" class="text-white mb-4" size="32"></i>
+                    <h3 class="text-xl font-bold mb-3">100% Private</h3>
+                    <p class="text-gray-400">
+                        The AI runs on your laptop or local server. Pull the ethernet cable; it still works. No data ever touches the cloud.
                     </p>
-                    <a href="services.html" class="btn">Collaborate With Me</a>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-zinc-900 p-8 rounded-lg border border-white/5 hover:border-white/20 transition">
+                    <i data-lucide="database" class="text-white mb-4" size="32"></i>
+                    <h3 class="text-xl font-bold mb-3">Total Recall</h3>
+                    <p class="text-gray-400">
+                        We index your PDFs, emails, and notes into a local Vector Vault. Chat with your entire history instantly.
+                    </p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-zinc-900 p-8 rounded-lg border border-white/5 hover:border-white/20 transition">
+                    <i data-lucide="zap" class="text-white mb-4" size="32"></i>
+                    <h3 class="text-xl font-bold mb-3">One-Time Asset</h3>
+                    <p class="text-gray-400">
+                        Stop paying subscriptions. You buy the setup once. You own the model, the code, and the data forever.
+                    </p>
                 </div>
             </div>
-        </section> -->
+        </div>
+    </section>
 
-    </main>
+    <!-- Industries (Niche Targeting) -->
+    <section id="industries" class="py-20 border-t border-white/10">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Built For High-Stakes Environments</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="p-6 border-l-2 border-white hover:bg-white/5 transition cursor-default">
+                    <h3 class="text-xl font-bold">Legal & Finance</h3>
+                    <p class="text-gray-400 text-sm mt-2">Analyze sensitive case files and contracts without breaching client confidentiality protocols.</p>
+                </div>
+                <div class="p-6 border-l-2 border-gray-700 hover:border-white hover:bg-white/5 transition cursor-default">
+                    <h3 class="text-xl font-bold">Medical Research</h3>
+                    <p class="text-gray-400 text-sm mt-2">Process patient notes and datasets locally. Fully HIPAA/GDPR compliant by design.</p>
+                </div>
+                <div class="p-6 border-l-2 border-gray-700 hover:border-white hover:bg-white/5 transition cursor-default">
+                    <h3 class="text-xl font-bold">Remote Operations</h3>
+                    <p class="text-gray-400 text-sm mt-2">Oil rigs, maritime, and mining. Access technical intelligence without satellite internet.</p>
+                </div>
+                <div class="p-6 border-l-2 border-gray-700 hover:border-white hover:bg-white/5 transition cursor-default">
+                    <h3 class="text-xl font-bold">IP & Creative</h3>
+                    <p class="text-gray-400 text-sm mt-2">Draft scripts and patents with an AI that doesn't steal your ideas for training data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- --- Footer --- -->
-    <footer class="main-footer">
-        <div class="container footer-content">
-            <ul class="footer-links">
-                <!-- Add your actual social links here -->
-                <li><a href="https://www.linkedin.com/in/siddhartha-sharma-ai" target="_blank">LinkedIn</a></li>
-                <li><a href="https://github.com/mesidd" target="_blank">GitHub</a></li>
-                <li><a href="https://x.com/mesidd_" target="_blank">X</a></li>
-            </ul>
-            <p class="footer-copyright">
-                &copy; 2025 Siddhartha Sharma. All rights reserved.
+    <!-- The "Generalist" Upsell (Hidden in plain sight) -->
+    <section class="py-24 bg-white text-black">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-6">Need Custom Engineering?</h2>
+            <p class="text-lg text-gray-700 mb-8">
+                Beyond AI, we build secure, high-performance digital infrastructure. If you need it built right, and built to last, we execute.
             </p>
+            <div class="flex flex-wrap justify-center gap-3 text-sm font-semibold text-gray-600 mb-8">
+                <span class="px-4 py-2 bg-gray-200 rounded-full">Full Stack Dev</span>
+                <span class="px-4 py-2 bg-gray-200 rounded-full">Automation</span>
+                <span class="px-4 py-2 bg-gray-200 rounded-full">Data Systems</span>
+                <span class="px-4 py-2 bg-gray-200 rounded-full">System Architecture</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer class="py-20 px-6 text-center">
+        <h2 class="text-3xl font-bold mb-8">Reclaim Your Sovereignty</h2>
+        <p class="text-gray-400 mb-8">Accepting clients for Q4 2025.</p>
+        <a href="mailto:sids51336@gmail.com" class="text-2xl font-bold border-b-2 border-white hover:text-gray-300 hover:border-gray-300 transition pb-1">
+            Contact Engineering
+        </a>
+        <div class="mt-20 text-xs text-gray-600">
+            &copy; 2025 Sovereign AI. All Systems Operational.
         </div>
     </footer>
 
     <script>
-        // Simple JavaScript for mobile menu toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const navLinks = document.getElementById('nav-links');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            
-            const isExpanded = navLinks.classList.contains('active');
-            menuToggle.setAttribute('aria-expanded', isExpanded);
-        });
+        lucide.createIcons();
     </script>
-
 </body>
 </html>
